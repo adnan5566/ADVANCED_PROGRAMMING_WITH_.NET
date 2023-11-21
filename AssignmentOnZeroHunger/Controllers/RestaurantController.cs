@@ -62,7 +62,7 @@ namespace ZeroHunger.Controllers
                 using (var db = new ZeroHunEntities())
                 {
                     request.RestaurantID = RestaurantID;
-                    int EmployeeId = 0;
+                    int EmployeeId = RestaurantID;
                     request.EmployeeId = EmployeeId;
                     request.Status = "Pending";
                     db.CollectRequests.Add(request);

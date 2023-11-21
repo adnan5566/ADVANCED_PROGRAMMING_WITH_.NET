@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-@model List<ZeroHunger.DataBase.Restaurant>
+@model List<AssignmentOnZeroHunger.DB.Restaurant>
 
 <h2>Collect Requests</h2>
 
@@ -48,8 +48,8 @@
 <br />
 
 <br />
-<a href="/Restaurant/AccpectData/"><button class="btn btn-primary" type="submit">Accpected Request</button></a>
-<a href="/Restaurant/RejectData/"><button class="btn btn-primary" type="submit">Rejected Request</button></a>
+<a href="/Restaurant/AccpectData/"><btn class="btn btn-primary" type="submit">Accpected Request</btn></a>
+<a href="/Restaurant/RejectData/"><btn class="btn btn-primary" type="submit">Rejected Request</btn></a>
 <br />
 <br />
 
@@ -73,13 +73,13 @@
                     if (collectRequest.Status == "Pending")
                     {
                         <tr>
-                            <td>@restaurant.Name</td>
+                            <td>@restaurant.Name </td>
                             <td>@collectRequest.PreservationTime</td>
                             <td>@collectRequest.CollectionDate.DayOfWeek</td>
                             <td>@collectRequest.Status</td>
                             <td>
-                                <a href="/Restaurant/Accpect/@collectRequest.ID"><button class="btn btn-success" type="submit">Accpect</button></a>
-                                <a href="/Restaurant/Reject/@collectRequest.ID"><button class="btn btn-danger" type="submit">Reject</button></a>
+                                <a href="/Restaurant/Accpect/@collectRequest.ID"><btn class="btn btn-success" type="submit">Accpect</btn></a>
+                                <a href="/Restaurant/Reject/@collectRequest.ID"><btn class="btn btn-danger" type="submit">Reject</btn></a>
                             </td>
                         </tr>
                     }

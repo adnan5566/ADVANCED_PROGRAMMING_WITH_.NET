@@ -97,7 +97,7 @@ namespace AssignmentOnZeroHunger.Controllers
             {
                 var restaurant = db.Restaurants.ToList();
 
-                var requests = db.CollectRequests.Where(r => r.EmployeeId == null).ToList();
+                var requests = db.CollectRequests.Where(r => r.EmployeeId == 0).ToList();
 
                 var employees = db.Employees.ToList();
 
@@ -135,3 +135,4 @@ namespace AssignmentOnZeroHunger.Controllers
         }
     }
 }
+

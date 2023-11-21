@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d89b353f54bd4f6e957e1e9f086337ad" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="d89b353f54bd4f6e957e1e9f086337ad" Name="Diagram1" ZoomLevel="57">
         <EntityTypeShape EntityType="ZeroHungerModel.CollectRequest" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerModel.Employee" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerModel.FoodDistribution" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ZeroHungerModel.NGO" Width="1.5" PointX="3.375" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZeroHungerModel.Restaurant" Width="1.5" PointX="5.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZeroHungerModel.Restaurant" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="ZeroHungerModel.FK_CollectRequest_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="ZeroHungerModel.FK_CollectRequest_Restaurant" ManuallyRouted="false" />
         <AssociationConnector Association="ZeroHungerModel.FK_FoodDistribution_CollectRequest" ManuallyRouted="false" />

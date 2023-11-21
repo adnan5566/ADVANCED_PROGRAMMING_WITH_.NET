@@ -1,10 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-@model List<ZeroHunger.DataBase.FoodDistribution>
+@model List<AssignmentOnZeroHunger.DB.FoodDistribution>
 
 
 <h2>Foods Distributions</h2>
@@ -87,7 +86,7 @@
                         <td>@food.Quantity</td>
                         <td>@food.RequestType</td>
                         <td>
-                            <a href="/FoodDistribution/Complete/@food.CollectRequestID"><button class="btn btn-success" type="submit">Completed</button></a>
+                            <a href="/FoodDistribution/Complete/@food.CollectRequestID"><btn  class="btn btn-success" type="submit">Completed</btn></a>
                         </td>
                     </tr>
                 }
