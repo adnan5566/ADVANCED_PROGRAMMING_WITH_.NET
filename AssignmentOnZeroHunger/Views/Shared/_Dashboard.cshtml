@@ -6,18 +6,29 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-inverse .navbar-nav > li > a {
+            color: #fff;
+        }
+
+            .navbar-inverse .navbar-nav > li > a:hover,
+            .navbar-inverse .navbar-nav > li > a:focus {
+                background-color: #337ab7;
+                color: #fff;
+            }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <!--<div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("NGO", "Create", "Restaurant", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+                </button>-->
+                @*@Html.ActionLink( "Create", "Restaurant", new { area = "" }, new { @class = "navbar-brand" })*@
+            <!--</div>-->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Collect Requests", "Create", "Restaurant")</li>
@@ -28,7 +39,7 @@
                     <li>@Html.ActionLink("Completed Requests List", "completData", "Restaurant")</li>
                 </ul>
             </div>
-        </div>
+        @*</div>*@
     </nav>
 
     <div class="container body-content">

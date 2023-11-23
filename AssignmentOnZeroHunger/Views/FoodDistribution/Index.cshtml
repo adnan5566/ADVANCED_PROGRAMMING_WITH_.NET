@@ -1,10 +1,10 @@
-﻿@{
+﻿<a href="/NGO/Index"><btn class="btn btn-primary" type="submit">Home</btn></a>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
 @model List<AssignmentOnZeroHunger.DB.FoodDistribution>
-
 
 <h2>Foods Distributions</h2>
 
@@ -26,11 +26,7 @@
             <option value="">Select a Collection</option>
             @foreach (var collection in ViewBag.Collections)
             {
-                if (collection.Status == "Accpect" && collection.EmployeeId != null)
-                {
-                    <option value="@collection.ID">@collection.ID</option>
-
-                }
+                <option value="@collection.Value">@collection.Text</option>
             }
         </select>
     </div>
@@ -58,10 +54,12 @@
 
     <button type="submit" class="btn btn-primary">Assign Employee</button>
 }
+
 <br />
 <hr />
 <br />
-@if (Model != null)
+
+@if (Model != null && Model.Any(f => f.RequestType == "Pending"))
 {
     <table class="table table-bordered">
         <thead>
@@ -75,26 +73,23 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var food in Model)
+            @foreach (var food in Model.Where(f => f.RequestType == "Pending"))
             {
-                if (food.RequestType == "Pending")
-                {
-                    <tr>
-                        <td>@food.CollectRequestID</td>
-                        <td>@food.Employee.Name</td>
-                        <td>@food.Date</td>
-                        <td>@food.Quantity</td>
-                        <td>@food.RequestType</td>
-                        <td>
-                            <a href="/FoodDistribution/Complete/@food.CollectRequestID"><btn  class="btn btn-success" type="submit">Completed</btn></a>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td>@food.CollectRequestID</td>
+                    <td>@food.Employee.Name</td>
+                    <td>@food.Date</td>
+                    <td>@food.Quantity</td>
+                    <td>@food.RequestType</td>
+                    <td>
+                        <a href="/FoodDistribution/Complete/@food.CollectRequestID" class="btn btn-success">Completed</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 }
 else
 {
-    <p>No Request found.</p>
+    <p>No pending food distribution requests found.</p>
 }

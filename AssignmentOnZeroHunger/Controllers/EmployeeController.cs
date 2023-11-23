@@ -37,7 +37,7 @@ namespace AssignmentOnZeroHunger.Controllers
                 db.Employees.Add(emp);
                 db.SaveChanges();
                 TempData["msg"] = "Employee Add Successfull";
-                return RedirectToAction("Add");
+                return RedirectToAction("Index");
             }
         }
 
@@ -90,49 +90,51 @@ namespace AssignmentOnZeroHunger.Controllers
                 return RedirectToAction("Index");
             }
         }
-        // GET: Employee
+
         public ActionResult Assign()
         {
+            List<CollectRequest> requests;
+            List<Employee> employees;
+
             using (var db = new ZeroHunEntities())
             {
-                var restaurant = db.Restaurants.ToList();
-
-                var requests = db.CollectRequests.Where(r => r.EmployeeId == 0).ToList();
-
-                var employees = db.Employees.ToList();
-
-
-                ViewBag.Requests = requests;
-                ViewBag.Employees = employees;
-
-                return View(restaurant);
+                requests = db.CollectRequests.Include(r => r.Restaurant).ToList();
+                employees = db.Employees.ToList();
             }
+
+            ViewBag.Requests = requests;
+            ViewBag.Employees = employees;
+
+            return View();
         }
+
+
 
         [HttpPost]
-        public ActionResult Assign(int requestId, int employeeId)
+public ActionResult Assign(int requestId, int employeeId)
+{
+    using (var db = new ZeroHunEntities())
+    {
+        var request = db.CollectRequests.Find(requestId);
+        var employee = db.Employees.Find(employeeId);
+
+        if (request != null && employee != null)
         {
-            using (var db = new ZeroHunEntities())
-            {
-                var request = db.CollectRequests.Find(requestId);
-                var employee = db.Employees.Find(employeeId);
+            request.EmployeeId = employee.ID;
+            db.Entry(request).State = EntityState.Modified;
+            db.SaveChanges();
 
-                if (request != null && employee != null)
-                {
-                    request.EmployeeId = employee.ID;
-                    db.Entry(request).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                    TempData["msg"] = "Employee assigned successfully!";
-                }
-                else
-                {
-                    TempData["error"] = "Invalid request or employee!";
-                }
-            }
-
-            return RedirectToAction("Assign");
+            TempData["msg"] = "Employee assigned successfully!";
+        }
+        else
+        {
+            TempData["error"] = "Invalid request or employee!";
         }
     }
+
+    return RedirectToAction("Assign");
 }
 
+
+    }
+}

@@ -1,0 +1,50 @@
+﻿<a href="/NGO/Index"><btn class="btn btn-primary" type="submit">Home</btn></a>
+
+@model List<AssignmentOnZeroHunger.DB.Restaurant>
+
+@{
+    ViewBag.Title = "Collect";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<h2>Status</h2>
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Preservation Time</th>
+                <th>Collection Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model)
+            {
+                foreach (var collectRequest in restaurant.CollectRequests)
+                {
+                    if (collectRequest.Status == "Pending")
+                    {
+                        <tr>
+                            <td>@restaurant.Name </td>
+                            <td>@collectRequest.PreservationTime</td>
+                            <td>@collectRequest.CollectionDate.DayOfWeek</td>
+                            <td>@collectRequest.Status</td>
+                            <td>
+                                <a href="/Restaurant/Accpect/@collectRequest.ID"><btn class="btn btn-success" type="submit">Accept</btn></a>
+                                <a href="/Restaurant/Reject/@collectRequest.ID"><btn class="btn btn-danger" type="submit">Reject</btn></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No Request found.</p>
+}

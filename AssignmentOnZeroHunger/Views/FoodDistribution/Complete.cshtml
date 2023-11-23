@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+@model List<AssignmentOnZeroHunger.DB.FoodDistribution>
+
+<h2>Foods Distributions</h2>
+
+<br />
+
+@if (Model != null && Model.Any(f => f.RequestType == "Pending"))
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Collect Request ID</th>
+                <th>Employee Name</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var food in Model.Where(f => f.RequestType == "Pending"))
+            {
+                <tr>
+                    <td>@food.CollectRequestID</td>
+                    <td>@food.Employee.Name</td>
+                    <td>@food.Date</td>
+                    <td>@food.Quantity</td>
+                    <td>@food.RequestType</td>
+                    <td>
+                        <a href="@Url.Action("Complete", "FoodDistribution", new { id = food.CollectRequestID })" class="btn btn-success">Completed</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No pending food distribution requests found.</p>
+}

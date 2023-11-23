@@ -247,6 +247,10 @@
     <Content Include="Views\Restaurant\Edit.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Restaurant\RejectData.cshtml" />
+    <Content Include="Views\Employee\Login.cshtml" />
+    <Content Include="Views\Restaurant\Collect.cshtml" />
+    <Content Include="Views\Restaurant\ViewCollect.cshtml" />
+    <Content Include="Views\FoodDistribution\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

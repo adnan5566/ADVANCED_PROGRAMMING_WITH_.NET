@@ -8,14 +8,18 @@ using AssignmentOnZeroHunger.DB;
 
 
 
-namespace ZeroHunger.Controllers
+namespace AssignmentOnZeroHunger.Controllers
 {
     public class NGOController : Controller
     {
         // GET: NGO
         public ActionResult Index()
         {
-            return View();
+            using (var db = new ZeroHunEntities())
+            {
+                var requests = db.Restaurants.ToList();
+                return View(requests);
+            }
         }
 
         [HttpGet]
@@ -36,13 +40,15 @@ namespace ZeroHunger.Controllers
                         {
                             Session["UserID"] = user.ID;
                             Session["UserID"] = user.Name;
-                            return RedirectToAction("Index", "Restaurant");
+                            return RedirectToAction("Index", "NGO");
                         }
 
                         ViewBag.Error = "Invalid username or password";
                         return View("Login");
                     }
                 }
+
+            
 
 
     }

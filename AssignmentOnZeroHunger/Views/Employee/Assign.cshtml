@@ -15,22 +15,15 @@
     <div class="alert alert-danger">@TempData["error"]</div>
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Assign", "Employee", FormMethod.Post))
 {
     <div class="form-group">
         <label for="requestId">Request:</label>
         <select id="requestId" name="requestId" class="form-control">
             <option value="">Select a request</option>
-            @foreach (var restaurants in Model)
+            @foreach (var request in ViewBag.Requests)
             {
-                foreach (var request in ViewBag.Requests)
-                {
-                    if (request.Status == "Accpect" && restaurants.ID == request.RestaurantID)
-                    {
-                        <option value="@request.ID">@restaurants.Name</option>
-
-                    }
-                }
+                <option value="@request.ID">@request.Restaurant.Name</option>
             }
         </select>
     </div>
@@ -48,4 +41,3 @@
 
     <button type="submit" class="btn btn-primary">Assign Employee</button>
 }
-

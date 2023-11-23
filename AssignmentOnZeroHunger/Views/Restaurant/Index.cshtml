@@ -1,14 +1,19 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
-    ViewData["Title"] = "Create Collect Request";
+    ViewData["Title"] = "Restaurant";
     var restaurantId = ViewBag.RestaurantId;
 }
 
-<h1>Restaurants</h1>
+
+<h1>Restaurant DashBoard</h1>
 
 <br />
-<a href="/Restaurant/Add/"><btn class="btn btn-primary" type="submit">Add</btn></a>
+
+<a href="/Restaurant/Create"><btn class="btn btn-primary" type="submit">Open Request</btn></a>
+
 <br />
 <br />
 
